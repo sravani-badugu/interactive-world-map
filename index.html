@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Population Explorer</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="glass-panel">
+            <div class="logo">
+                <i class="fa-solid fa-earth-americas globe-icon"></i>
+                <h1>GeoPop</h1>
+            </div>
+            
+            <div class="search-container">
+                <i class="fa-solid fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search for a country...">
+                <div id="searchResults" class="search-results hidden"></div>
+            </div>
+            
+            <div class="controls">
+                <button id="themeToggle" class="icon-btn" title="Toggle Theme">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Map Container -->
+            <div class="map-wrapper">
+                <div id="map"></div>
+                
+                <!-- Legend Overlay -->
+                <div class="map-legend glass-panel">
+                    <h3>Population Density</h3>
+                    <div class="legend-scale">
+                        <div class="color-bar"></div>
+                        <div class="legend-labels">
+                            <span>Low</span>
+                            <span>Medium</span>
+                            <span>High</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Panel -->
+            <aside class="info-panel glass-panel hidden" id="infoPanel">
+                <button class="close-btn" id="closePanel"><i class="fa-solid fa-xmark"></i></button>
+                
+                <div class="country-header">
+                    <span id="countryFlag" class="flag-large">🏳️</span>
+                    <h2 id="countryName">Select a Country</h2>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fa-solid fa-users"></i>
+                        <div class="stat-info">
+                            <span class="stat-label">Population</span>
+                            <span class="stat-value" id="statPopulation">-</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <i class="fa-solid fa-map"></i>
+                        <div class="stat-info">
+                            <span class="stat-label">Area (km²)</span>
+                            <span class="stat-value" id="statArea">-</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <i class="fa-solid fa-city"></i>
+                        <div class="stat-info">
+                            <span class="stat-label">Capital</span>
+                            <span class="stat-value" id="statCapital">-</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <i class="fa-solid fa-users-rays"></i>
+                        <div class="stat-info">
+                            <span class="stat-label">Density</span>
+                            <span class="stat-value" id="statDensity">-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="comparison-section">
+                    <h3>Compare With</h3>
+                    <select id="compareSelect" class="styled-select">
+                        <option value="">Select country...</option>
+                    </select>
+                    
+                    <div id="comparisonResult" class="comparison-result hidden">
+                        <!-- Comparison charts will go here -->
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
